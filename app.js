@@ -36,7 +36,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use (bodyParser.urlencoded({ extended: false})); 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false})); 
 
 router.get('/', function(req, res){
     res.render('index', { header: 'index!'});
@@ -55,9 +56,10 @@ router.get('/candies', function(req, res){
 });
 
 router.post('/candies', function(req, res){
-    console.log(req);
-    // var candy_id = req.params.id;
-    // candies.push(candy_id);
+    // console.log(req.body);
+    candy = req.body;
+
+    candies.push(candy);
     res.json(candies);
 });
 
