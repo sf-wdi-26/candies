@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
 var router = express.Router();
-var bodyParser = require('bodyParser');
+var bodyParser = require('body-parser');
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -19,7 +19,7 @@ router.get('/', function(req, res){
     res.render('index', { header: 'index!'});
 });
 
-router.get('contact', function(req, res){
+router.get('/contact', function(req, res){
     res.render('contact', { header: 'contact!'});
 });
 

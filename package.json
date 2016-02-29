@@ -4,9 +4,9 @@
   "description": "a candy app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm app.js"
   },
-  "author": "",
+  "author": "Ben Hulan",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.13.2",
