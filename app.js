@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use (bodyParser.urlencoded({ extended: false})); 
+app.use(bodyParser.urlencoded({ extended: false})); 
 
 router.get('/', function(req, res){
     res.render('index', { header: 'index!'});
