@@ -1,7 +1,8 @@
 var express = require('express'),
     app = express(),
     router = express.Router(),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override');
 
 var candies = [{
     id: 16,
@@ -26,18 +27,20 @@ var candies = [{
 
 var candy = {};
 
+// GET ALL
 router.get('/candies', function(req, res){
     res.json(candies);
 });
 
+// POST
 router.post('/candies', function(req, res){
     // console.log(req.body);
     candy = req.body;
-
     candies.push(candy);
     res.json(candies);
 });
 
+// SHOW
 router.get('/candies/:id', function(req, res){
     for (var i = 0; i < candies.length; i++){
         if ( req.params.id == candies[i].id){
@@ -45,6 +48,17 @@ router.get('/candies/:id', function(req, res){
             res.json(candy);
         }
     }
+});
+
+// UPDATE
+router.put('/candies/:id/', function(req, res){
+    for (var key in candies){
+        if (req.params.id == candies[key]["id"]){
+            candy = req.body;
+            candies[key] = candy;
+        }
+    }
+    res.json(candy);
 });
 
 app.use('/candies', router);
