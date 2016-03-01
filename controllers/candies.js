@@ -43,7 +43,7 @@ router.post('/candies', function(req, res){
 // SHOW
 router.get('/candies/:id', function(req, res){
     for (var i = 0; i < candies.length; i++){
-        if ( req.params.id == candies[i].id){
+        if (candies[i].id == req.params.id){
             candy = candies[i];
             res.json(candy);
         }
@@ -53,12 +53,22 @@ router.get('/candies/:id', function(req, res){
 // UPDATE
 router.put('/candies/:id/', function(req, res){
     for (var key in candies){
-        if (req.params.id == candies[key]["id"]){
+        if (candies[key]["id"] == req.params.id){
             candy = req.body;
             candies[key] = candy;
         }
     }
     res.json(candy);
+});
+
+// DELETE
+router.delete('/candies/:id', function(req, res){
+    for (var key in candies){
+        if(candies[key]["id"] == req.params.id){
+            delete candies[key];
+        }
+    }
+    res.json({message: 'deleted'});
 });
 
 app.use('/candies', router);
