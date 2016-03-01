@@ -47,5 +47,5 @@ router.get('/candies/:id', function(req, res){
     }
 });
 
-app.use('/', router);
+app.use('/candies', router);
 module.exports = router;
